@@ -25,7 +25,7 @@ export default function Hero() {
         <Button
           className="cursor-pointer hidden md:block rounded-full px-8 py-3 bg-black/40 text-white backdrop-blur-md hover:bg-black/60 transition text-lg h-auto"
         >
-          <Github href="https://github.com/Sundaram-Katare" />
+          <Github href="https://github.com/Sundaram-Katare/study-planner" />
         </Button>
       </nav>
 
@@ -52,7 +52,7 @@ export default function Hero() {
         <div className="mt-4 md:mt-8">
           <Stepper mode={darkMode ? "dark" : "light"} />
         </div>
-        <LaptopShowcase />
+        {/* <LaptopShowcase /> */}
       </div>
 
     </div>

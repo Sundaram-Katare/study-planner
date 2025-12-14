@@ -16,7 +16,7 @@ export default function LaptopShowcase() {
 
           <div className="pt-6">
             <video
-              src="/demo.mp4"
+              src="https://www.loom.com/share/43f63e1440e549d7bb6786f161fef43b"
               autoPlay
               loop
               muted
