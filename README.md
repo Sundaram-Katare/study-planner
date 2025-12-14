@@ -1,36 +1,112 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 📚 Planix
+
+Planix is a full-stack web app that turns any syllabus into a personalized, day-wise study roadmap using Gemini AI.  
+Users enter their syllabus, number of days, and hours per day, and the app generates structured daily cards with topics, subtasks, time estimates, and revision suggestions.
+
+---
+
+## ✨ Features
+
+- **AI-generated study plans**
+  - Paste syllabus text, choose days and hours per day.
+  - Gemini AI splits your content into logical topics and daily chunks.
+- **Day-wise study cards**
+  - One card per day.
+  - Each card contains:
+    - Topics to study
+    - Estimated time
+    - Actionable subtasks
+    - Optional revision section
+- **Progress statuses**
+  - Each card has a status badge:
+    - 🟦 To Do
+    - 🟧 In Progress
+    - 🟩 Done
+  - Simple click-to-cycle; no Kanban board, just day-wise cards.
+- **User authentication**
+  - Secure sign-in / sign-up with Clerk.
+  - Each user has their own set of study plans.
+- **Persistent storage**
+  - PostgreSQL + Prisma ORM for users, plans, and daily cards.
+- **Modern UI**
+  - Next.js App Router + TypeScript + Tailwind CSS.
+  - Clean landing page with hero section and feature highlights.
+  - Dashboard listing all study plans with progress bars.
+
+---
+
+## 🧱 Tech Stack
+
+| Layer         | Technology              |
+|--------------|-------------------------|
+| Framework    | Next.js (App Router)    |
+| Language     | TypeScript              |
+| Styling      | Tailwind CSS            |
+| Auth         | Clerk                   |
+| Database     | PostgreSQL              |
+| ORM          | Prisma                  |
+| AI           | Google Gemini API       |
+| Deployment   | **Vercel** (recommended)    |
+
+---
 
 ## Getting Started
 
-First, run the development server:
-
+### 1. Clone the repo
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+  git clone https://github.com/your-username/ai-study-planner.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Move to the project directory
+```bash
+ cd study-planner
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 3. Install dependencies
+```bash
+ npm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 4. Configure env variables in `.env.local`
+```bash
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key
+CLERK_SECRET_KEY=your_clerk_secret_key
+NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
+NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
+NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=/dashboard
+NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/dashboard
 
-## Learn More
+Database
+DATABASE_URL=postgresql://username:password@localhost:5432/study_planner
 
-To learn more about Next.js, take a look at the following resources:
+Gemini
+GEMINI_API_KEY=your_gemini_api_key
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 5. Run development server
+```bash
+ npm run dev
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 🧠 How the Planix Works
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. User enters:
+   - Syllabus text
+   - Number of days
+   - Hours available per day
+2. Backend calls Gemini with a structured prompt to:
+   - Break syllabus into topics and subtasks
+   - Distribute work across days
+   - Estimate time per day
+   - Add revision days where needed
+3. The JSON response is stored in PostgreSQL as `StudyPlan` and `DailyCard` records.
+4. The frontend renders day-wise cards with status badges and lets the user update progress.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 📜 License
+
+This project is for educational and personal use.  
+Ensure compliance with the terms of the Gemini, Clerk, and any other APIs you use.
