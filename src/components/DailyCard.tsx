@@ -95,7 +95,6 @@ export default function DailyCard(props: DailyCardProps) {
 
         <div className="flex gap-2 mt-4">
           <Button
-            size="sm"
             variant="outline"
             className="w-full cursor-pointer"
             onClick={() => setOpen(true)}
@@ -104,7 +103,6 @@ export default function DailyCard(props: DailyCardProps) {
           </Button>
 
           <Button
-            size="sm"
             disabled={loading}
             className="w-full bg-white text-black hover:bg-gray-200"
             onClick={handleStatusChange}
