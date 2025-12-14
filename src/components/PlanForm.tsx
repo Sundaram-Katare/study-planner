@@ -6,7 +6,7 @@ import { Button } from './ui/Button';
 import { Input } from './ui/Input';
 import { Textarea } from './ui/TextArea';
 
-export default function PlanForm() {
+export default function PlanForm({ onGenerate }: { onGenerate: () => void }) {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
@@ -18,6 +18,7 @@ export default function PlanForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+      onGenerate();
     setLoading(true);
 
     try {
@@ -49,7 +50,7 @@ export default function PlanForm() {
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-2">
+        <label className="block text-sm font-medium text-gray-200 mb-2">
           Plan Title
         </label>
         <Input
@@ -62,7 +63,7 @@ export default function PlanForm() {
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-black mb-2">
+        <label className="block text-sm font-medium text-gray-200 mb-2">
           Syllabus / Topics
         </label>
         <Textarea
@@ -78,7 +79,7 @@ export default function PlanForm() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
+          <label className="block text-sm font-medium text-gray-200 mb-2">
             Number of Days
           </label>
           <Input
@@ -95,7 +96,7 @@ export default function PlanForm() {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-black mb-2">
+          <label className="block text-sm font-medium text-gray-200 mb-2">
             Hours Per Day
           </label>
           <Input
